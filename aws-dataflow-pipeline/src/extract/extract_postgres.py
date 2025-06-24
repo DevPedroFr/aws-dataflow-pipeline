@@ -7,7 +7,7 @@ def extract_data_from_postgres():
         conn = psycopg2.connect(
             host ="localhost",
             port ="5432",
-            database ="meu_banco",
+            database ="meubanco",
             user ="postgres",
             password ="123456"    
             )
