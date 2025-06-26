@@ -21,6 +21,8 @@ def extract_data_from_postgres():
         df.to_csv('vendas.csv', index=False)
 
         conn.close()
+        return df
+    
     except Exception as e:
         print(f"Erro ao conectar ou extrair dados: {e}")
 

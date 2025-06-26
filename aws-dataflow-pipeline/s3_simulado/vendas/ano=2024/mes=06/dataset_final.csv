@@ -1,0 +1,7 @@
+id_x,nome,produto,valor,data_venda,id_y,email,faixa_preco
+1,João,Notebook,3500.0,2024-06-01,1,joao@email.com,alto
+2,Maria,Mouse,150.0,2024-06-05,2,maria@email.com,baixo
+3,Pedro,Monitor,1200.0,2024-06-10,3,pedro@email.com,médio
+4,João,Notebook,3500.0,2024-06-01,1,joao@email.com,alto
+5,Maria,Mouse,150.0,2024-06-05,2,maria@email.com,baixo
+6,Pedro,Monitor,1200.0,2024-06-10,3,pedro@email.com,médio
