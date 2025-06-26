@@ -11,7 +11,7 @@ def run_pipeline():
     df_api = extract_users_from_api()
 
     print("\n==== Etapa 2: Transformação ====")
-    df_final = transform_data(df_vendas, df_clientes)
+    df_final = transform_data(df_vendas, df_clientes, df_api)
 
     print("\n==== Etapa 3: Carga ====")
     load_to_s3(df_final, ano=2024, mes="06")
