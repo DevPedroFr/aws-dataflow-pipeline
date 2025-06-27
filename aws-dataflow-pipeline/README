@@ -1,0 +1,125 @@
+# AWS DataFlow Pipeline (Simulado)
+
+Este é um projeto educacional que simula um pipeline de dados no estilo de soluções em nuvem como AWS Glue e S3, integrando múltiplas fontes de dados, processamento com Pandas e particionamento de saída para simular um data lake.
+
+## Objetivo
+
+Demonstrar um pipeline ETL completo, com foco em boas práticas de engenharia de dados. O projeto realiza:
+
+- Extração de dados de um banco PostgreSQL
+- Extração de dados de um arquivo CSV local
+- Extração de dados de uma API pública
+- Transformação e enriquecimento de dados com Pandas
+- Geração de coluna analítica (faixa de preço)
+- Enriquecimento com cidade via API
+- Particionamento da saída por ano e mês
+- Simulação de carga em bucket S3 (estrutura de pastas)
+- Logging profissional com o módulo `logging`
+- Execução containerizada com Docker
+
+## Tecnologias Utilizadas
+
+- Python 3.10+
+- Pandas
+- psycopg2
+- requests
+- Docker
+- PostgreSQL (via container)
+- Estrutura modular de ETL
+
+## Estrutura do Projeto
+
+\`\`\`
+aws-dataflow-pipeline/
+│
+├── data/                     # CSVs de entrada e saída
+├── s3_simulado/              # Simulação de bucket S3 com particionamento
+├── src/
+│   ├── extract/              # Scripts de extração
+│   ├── transform/            # Transformação dos dados
+│   ├── load/                 # Carga para diretórios simulando o S3
+│   └── utils/                # Logger e utilitários
+│
+├── main.py                   # Orquestrador do pipeline
+├── Dockerfile                # Ambiente Docker
+├── requirements.txt          # Lista de dependências
+└── README.md                 # Este arquivo
+\`\`\`
+
+## Como Executar o Projeto
+
+### 1. Clonar o repositório
+
+\`\`\`bash
+git clone https://github.com/seu-usuario/aws-dataflow-pipeline.git
+cd aws-dataflow-pipeline
+\`\`\`
+
+### 2. Iniciar o PostgreSQL local com Docker
+
+\`\`\`bash
+docker run --name postgres \
+  -e POSTGRES_PASSWORD=123456 \
+  -e POSTGRES_USER=postgres \
+  -e POSTGRES_DB=meubanco \
+  -p 5432:5432 -d postgres
+\`\`\`
+
+### 3. Popular o banco
+
+Utilize o script SQL fornecido no projeto para criar e inserir dados na tabela \`vendas\`.
+
+### 4. Instalar as dependências (modo local)
+
+\`\`\`bash
+pip install -r requirements.txt
+\`\`\`
+
+### 5. Executar o pipeline
+
+\`\`\`bash
+python main.py
+\`\`\`
+
+Ao final, o arquivo \`dataset_final.csv\` será salvo na estrutura:
+
+\`\`\`
+s3_simulado/ano=2024/mes=06/dataset_final.csv
+\`\`\`
+
+## Executar com Docker (opcional)
+
+### 1. Construir a imagem
+
+\`\`\`bash
+docker build -t aws-data-pipeline .
+\`\`\`
+
+### 2. Rodar o pipeline
+
+\`\`\`bash
+docker run --rm aws-data-pipeline
+\`\`\`
+
+## Resultado Esperado
+
+O arquivo final gerado possui:
+
+- Dados integrados de três fontes
+- Coluna de faixa de preço criada dinamicamente
+- Enriquecimento com cidade obtida da API
+- Salvo em partições por ano e mês
+
+## Possíveis Extensões
+
+- Integração com S3 real
+- Integração com Airflow
+- Deploy em Lambda ou Glue
+- Leitura com Athena
+- Versionamento de arquivos
+
+## Autor
+
+Pedro França  
+Desenvolvedor Python | Estudante de Ciência de Dados  
+GitHub: https://github.com/DevPedroFr
