@@ -14,7 +14,6 @@ Demonstrar um pipeline ETL completo, com foco em boas práticas de engenharia de
 - Enriquecimento com cidade via API
 - Particionamento da saída por ano e mês
 - Simulação de carga em bucket S3 (estrutura de pastas)
-- Logging profissional com o módulo `logging`
 - Execução containerizada com Docker
 
 ## Tecnologias Utilizadas
