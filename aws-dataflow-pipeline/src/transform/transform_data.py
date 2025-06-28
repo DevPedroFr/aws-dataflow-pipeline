@@ -2,16 +2,12 @@ import pandas as pd
 
 def transform_data(df_vendas, df_clientes, df_api):
     try:
-        # Renomeia a coluna para fazer o merge com df_clientes
         df_vendas = df_vendas.rename(columns={"cliente": "nome"})
 
-        # Merge com dados de clientes (usando nome)
         df_merged = pd.merge(df_vendas, df_clientes, on="nome", how="left")
 
-        # Padroniza nomes das colunas
         df_merged.columns = [col.lower().strip() for col in df_merged.columns]
 
-        # Preenche e-mails faltantes
         df_merged['email'] = df_merged['email'].fillna('nao_informado@example.com')
 
         def faixa_preco(valor):

@@ -50,7 +50,7 @@ aws-dataflow-pipeline/
 ### 1. Clonar o repositório
 
 \`\`\`bash
-git clone https://github.com/seu-usuario/aws-dataflow-pipeline.git
+git clone https://github.com/DevPedroFr/aws-dataflow-pipeline.git
 cd aws-dataflow-pipeline
 \`\`\`
 
